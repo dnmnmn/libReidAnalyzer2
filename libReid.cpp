@@ -1,14 +1,16 @@
 #include "libReid.h"
-#include "Engine/REIDEngine.h"
+#include "Engine/ReidEngine.h"
+#include "Channel/ReidChannel.h"
+#include "Component.hpp"
 
-shared_ptr<REIDEngine> reid_handle = nullptr;
-shared_ptr<REIDQuery> reid_query_handle = nullptr;
+sptr<ReidEngine> reid_handle = nullptr;
+sptr<ReidQuery> reid_query_handle = nullptr;
 
 int reid_set_model(int32_t device = -1)
 {
     if(reid_handle == nullptr)
     {
-        reid_handle = make_shared<REIDEngine>();
+        reid_handle = make_shared<ReidEngine>();
         if (reid_handle->initialize() == true) return 0;
         else
         {
@@ -17,24 +19,6 @@ int reid_set_model(int32_t device = -1)
         }
     }
     return -1;
-}
-
-int reid_process()
-{
-    if (reid_handle == nullptr) return -1;
-    return reid_handle->process();
-}
-
-int reid_get_result(reidFeatureResult_t* result)
-{
-    if (reid_handle == nullptr) return -1;
-    return reid_handle->get_result(result);
-}
-
-int reid_release_result()
-{
-    if (reid_handle == nullptr) return -1;
-    return reid_handle->release_result();
 }
 
 int reid_release_model()
@@ -46,11 +30,41 @@ int reid_release_model()
     return 0;
 }
 
+int reid_set_channel()
+{
+    if (reid_handle == nullptr) return -1;
+    return reid_handle->make_channel();
+}
+
+int reid_release_channel(size_t channel_handle)
+{
+    if (reid_handle == nullptr) return -1;
+    return reid_handle->release_channel(channel_handle);
+}
+
+int reid_process(size_t channel_handle)
+{
+    if (reid_handle == nullptr) return -1;
+    return ((ReidChannel*)channel_handle)->process();
+}
+
+int reid_get_result(size_t channel_handle, reidFeatureResult_t* result)
+{
+    if (reid_handle == nullptr) return -1;
+    return ((ReidChannel*)channel_handle)->get_result(result);
+}
+
+int reid_release_result(size_t channel_handle)
+{
+    if (reid_handle == nullptr) return -1;
+    return ((ReidChannel*)channel_handle)->release_result();
+}
+
 int reid_set_query()
 {
     if(reid_query_handle == nullptr)
     {
-        reid_query_handle = make_shared<REIDQuery>();
+        reid_query_handle = make_shared<ReidQuery>();
         if (reid_query_handle->reid_query_initialize() == true) return 0;
         else
         {

@@ -50,10 +50,14 @@ typedef struct reidFeatureResult_t {
  * @param device : GPU 번호
  * @return 성공 시 0, 실패 시 -1      */
 REID_C_EXPORT int reid_set_model();
+REID_C_EXPORT int reid_release_model();
+
+REID_C_EXPORT int reid_set_channel();
+REID_C_EXPORT int reid_release_channel();
 REID_C_EXPORT int reid_process();
 REID_C_EXPORT int reid_get_result();
 REID_C_EXPORT int reid_release_result();
-REID_C_EXPORT int reid_release_model();
+
 
 REID_C_EXPORT int reid_set_query();
 REID_C_EXPORT int reid_compare_gallery();
