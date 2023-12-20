@@ -7,6 +7,8 @@
 
 #include "Component.hpp"
 #include "concurrent_queue.h"
+#include "../Engine/ReidEngine.h"
+#include "../libReid.h"
 
 class ReidChannel : public Component
 {
@@ -19,6 +21,8 @@ public:
     int process();
     int get_result(reidFeatureResult_t* result);
     int release_result();
+private:
+    ReidEngine engine;
 };
 
 #endif //__LIB_REID_CHANNEL_H__

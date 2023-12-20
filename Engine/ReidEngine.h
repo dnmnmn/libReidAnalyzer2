@@ -1,8 +1,6 @@
 #ifndef __LIB_REID_ENGINE_H__
 #define __LIB_REID_ENGINE_H__
 
-#include "../Library/Component.h++"
-#include "../Library/concurrent_queue.h"
 #include "../Channel/ReidChannel.h"
 #include <thread>
 #include <mutex>

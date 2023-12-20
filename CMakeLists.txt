@@ -27,6 +27,10 @@ add_library(libReidAnalyzer2 SHARED libReid.cpp
         Engine/ReidEngine.h
         Channel/ReidChannel.cpp
         Channel/ReidChannel.h
+        GPU/GPUDevice/GPUDevice.cpp
+        GPU/GPUDevice/GPUDevice.h
+        GPU/ReID/ReidModelInstance.cpp
+        GPU/ReID/ReidModelInstance.h
 )
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
