@@ -22,7 +22,7 @@ link_directories("../Library/libIDL")
 
 include_directories("../libFoundation")
 
-add_library(libReidAnalyzer2 SHARED libReid.cpp
+add_library(libReidAnalyzer2 SHARED libReid/libReid.cpp
         Engine/ReidEngine.cpp
         Engine/ReidEngine.h
         Channel/ReidChannel.cpp
@@ -31,6 +31,12 @@ add_library(libReidAnalyzer2 SHARED libReid.cpp
         GPU/GPUDevice/GPUDevice.h
         GPU/ReID/ReidModelInstance.cpp
         GPU/ReID/ReidModelInstance.h
+        libReid/definition.h
+        libReid/definition.h
+        Query/ReidQuery.cpp
+        Query/ReidQuery.cpp
+        Query/ReidQuery.h
+        Query/ReidQuery.h
 )
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")

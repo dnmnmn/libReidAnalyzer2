@@ -8,6 +8,7 @@
 #include "Component.hpp"
 #include "../GPUDevice/GPUDevice.h"
 #include <mutex>
+class GPUDevice;
 class ReidModelInstance : public Component
 {
 private:

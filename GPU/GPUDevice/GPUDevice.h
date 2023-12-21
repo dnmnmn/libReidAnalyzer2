@@ -7,12 +7,15 @@
 
 #include "Component.hpp"
 #include "concurrent_queue.h"
+#include "JsonObject.h"
 #include "../../Engine/ReidEngine.h"
-#include <nvml.h>
 #include "../ReID/ReidModelInstance.h"
+#include <nvml.h>
 
 using namespace tbb::detail::d2;
 
+class ReidEngine;
+class ReidChannel;
 class GPUDevice : public Component
 {
 private:
@@ -29,7 +32,7 @@ private:
 public:
     GPUDevice();
     ~GPUDevice();
-    void initialize(int gpu_id, int reid_model_instance_count);
+    void initialize(int gpu_id, JsonObject* config_json);
     void release();
 public:
     int get_gpu_id();

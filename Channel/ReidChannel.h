@@ -8,8 +8,9 @@
 #include "Component.hpp"
 #include "concurrent_queue.h"
 #include "../Engine/ReidEngine.h"
-#include "../libReid.h"
+#include "../libReid/libReid.h"
 
+class ReidEngine;
 class ReidChannel : public Component
 {
 public:
@@ -22,7 +23,7 @@ public:
     int get_result(reidFeatureResult_t* result);
     int release_result();
 private:
-    ReidEngine engine;
+    wptr<ReidEngine> engine;
 };
 
 #endif //__LIB_REID_CHANNEL_H__

@@ -22,3 +22,23 @@ void ReidChannel::initialize()
     config_json.load(config_path);
 
 }
+
+void ReidChannel::release()
+{
+
+}
+
+int ReidChannel::process()
+{
+    return 0;
+}
+
+int ReidChannel::get_result(reidFeatureResult_t* result)
+{
+    return 0;
+}
+
+int ReidChannel::release_result()
+{
+    return 0;
+}
